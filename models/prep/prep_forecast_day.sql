@@ -7,7 +7,7 @@ add_features AS (
         ,date_part('day', date) AS day_of_month -- day of month as a number
         ,to_char(date, 'month') AS month_of_year -- month name as a text
         ,date_part('year', date) AS year -- year as a number
-        ,to_char(date, 'weekday') AS day_of_week -- weekday name as text
+        ,to_char(date, 'day') AS day_of_week -- weekday name as text
         ,date_part('week', date) AS week_of_year -- calender week number as number
         ,to_char(date, 'iyyy-iw') AS year_and_week -- year-calenderweek as text like '2024-43'
 
