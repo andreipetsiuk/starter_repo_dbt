@@ -3,4 +3,4 @@ sources:
 - name: staging
   schema: public
   tables:
-    -name: weather_raw
+    - name: weather_raw
