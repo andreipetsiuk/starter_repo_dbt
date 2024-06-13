@@ -38,4 +38,4 @@ select
 	prep_forecast_day.moon_illumination
 from staging_location 
 right join prep_forecast_day 
-	on staging_location.city = prep_forecast_day.city		on staging_location.city = prep_forecast_day.city
+	on staging_location.city = prep_forecast_day.city
