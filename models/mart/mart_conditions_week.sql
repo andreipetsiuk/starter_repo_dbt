@@ -33,14 +33,14 @@ select
 	sum(total_snow_cm)                                          as weekly_total_snow_cm,
 	avg(avg_vis_km)                                             as weekly_avg_vis_km,
 	avg(avg_humidity)                                           as weekly_avg_humidity,
-	count(
+	sum(
 	case 
 		when condition_text = 'Sunny' 
 		then 1
         else 0
 	end
 	)                                                           as sunny_days,
-	count(	
+	sum(	
 	case 
 		when condition_text in 
 			('Patchy rain possible', 
@@ -58,13 +58,13 @@ select
 		then 1 else 0
 	end 
 	)                                                           as rainy_days,
-	count(
+	sum(
 	case 
 		when condition_text = 'Snowy'
 		then 1 else 0
 	end
 	)                                                           as snowy_days,
-	count(
+	sum(
 	case 
 		when condition_text not in
 			('Snowy',
@@ -81,7 +81,7 @@ select
 			'Moderate or heavy rain shower',
 			'Thundery outbreaks possible',
 			'Moderate or heavy rain with thunder')
-		then 1
+		then 1 else 0
 	end
 	)                                                           as other_days
 from weekly_forecast_weather
