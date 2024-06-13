@@ -1,5 +1,5 @@
 select 
-    prep_forecast_hour.date
+    prep_forecast_hour.date,
     staging_location.city,
     staging_location.region,
     staging_location.country,
