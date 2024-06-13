@@ -15,7 +15,7 @@ select
 	prep_forecast_day.condition_icon,
 	concat('&nbsp;&nbsp;&nbsp;&nbsp;![weather_icon](', prep_forecast_day.condition_icon,'?width=35)') 						as condition_icon_md,
 	(case 
-		when prep_forecast_day.sunsrise = 'No sunrise' 
+		when prep_forecast_day.sunrise = 'No sunrise' 
 		then null 
 		else prep_forecast_day.sunrise 
 	end)::time 																												as sunrise,
@@ -36,6 +36,6 @@ select
 	end)::time 																												as moonset,
 	prep_forecast_day.moon_phase,
 	prep_forecast_day.moon_illumination
-from staging_location 
-right join prep_forecast_day 
+from {{ref('staging_location')}} 
+right join {{ref('prep_forecast_day')}} 
 	on staging_location.city = prep_forecast_day.city
